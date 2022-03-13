@@ -10,6 +10,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Parsing Csv files.
+ *
+ * Observe some potential platform dependent problems.
+ *  "git add .
+ * warning: CRLF will be replaced by LF in src/main/resources/music/midi-notes-mapping.csv.
+ * The file will have its original line endings in your working directory."
+ */
 public class CSVFileReader {
 
 
@@ -20,7 +28,7 @@ public class CSVFileReader {
         } catch (IOException ie) {
             ie.printStackTrace();
         }
-        
+
         return new LinkedList<>();
     }
 

@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
+ * A simple demo.
  * @author Christopher Yamba
  */
 public class MidiPlayApp {
