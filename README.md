@@ -3,7 +3,7 @@
 ***Creative and recreational fun!***
 
 In honour of PI day somewhere around 2016. 
-This is an archived entry in my weekend coding leasures in the past. 
+This is an archived entry from my weekend coding leasures in the past. 
 
 This is a simple app utilising JDKs MIDI support.
 To the joy of those of us technical and mathematically inclined music geeks. :)
