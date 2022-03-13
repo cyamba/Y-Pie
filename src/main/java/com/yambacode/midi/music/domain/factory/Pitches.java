@@ -84,13 +84,13 @@ public class Pitches {
         return -1;
     }
 
-    static final int throwIllegalArgOctave(Integer octave) {
+    static int throwIllegalArgOctave(Integer octave) {
         throw new IllegalArgumentException(String
-                .format("ocatave must satisfy 0<= ocatave <= 10. But was : ", octave));
+                .format("Octave must satisfy 0 <= octave <= 10. But was : %s", octave));
     }
 
-    static final int throwIllegalArgNote(Integer note) {
+    static int throwIllegalArgNote(Integer note) {
         throw new IllegalArgumentException(String
-                .format("note must satisfy 0<= ocatave <= 11. But was : ", note));
+                .format("note must satisfy 0<= ocatave <= 11. But was : %s", note));
     }
 }

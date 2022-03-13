@@ -24,12 +24,13 @@ import static java.util.stream.Collectors.toList;
 public class FileReader {
 
     public static final String SRC_MAIN_RESOURCES = "src/main/resources/";
+    public static final double HALF_A_SECOND = 500d;
+    public static final int _0_IN_ASCII_48_OFFSET = '0';
 
     public static List<Note> parseNotes(String filePath) {
 
         Function<String, Double> toDouble = (String s) -> Double.valueOf(s);
 
-        //read filePath into stream, try-with-resources
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             List<Note> collect = stream.map(line ->
                     Note.of(toDouble.apply(line.split("_")[0]), toDouble.apply(line.split("_")[1])))
@@ -42,9 +43,8 @@ public class FileReader {
     }
 
 
-    public static List<Note> parseJustPictes(String filePath) {
+    public static List<Note> parseJustPitches(String filePath) {
 
-        //read filePath into stream, try-with-resources
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             List<Note> collect = stream.flatMap(line -> getNoteStream(line))
                     .map(_double -> Note.of(500d, _double))
@@ -81,7 +81,7 @@ public class FileReader {
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             return stream
                     .flatMap(line -> getIntStream(line))
-                    .map(i -> Note.of(500d, i))
+                    .map(i -> Note.of(HALF_A_SECOND, i))
                     .map(note->Transposer.transpose(Intervals.OCTAVE*3,note))
                     .collect(toList());
 
@@ -95,7 +95,7 @@ public class FileReader {
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             return stream
                     .flatMap(line -> getIntStream(line))
-                    .map(i -> Note.of(500d, i))
+                    .map(i -> Note.of(HALF_A_SECOND, i))
                     .map(NoteMapper::toMidiNote)
                     .collect(toList());
 
@@ -109,7 +109,7 @@ public class FileReader {
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             return stream
                     .flatMap(line -> getIntStream(line))
-                    .map(i -> Note.of(500d, i))
+                    .map(i -> Note.of(HALF_A_SECOND, i))
                     .map(NoteMapper::toMidiNote)
                     .peek(System.out::println)
                     .peek(melodizer::play);
@@ -121,7 +121,9 @@ public class FileReader {
     }
 
     private static Stream<Integer> getIntStream(String line) {
-        return line.chars().mapToObj(i -> (i - 48));
+        return line.chars()
+                .mapToObj(i -> (i - _0_IN_ASCII_48_OFFSET))
+                .peek(System.out::println);
     }
 
 

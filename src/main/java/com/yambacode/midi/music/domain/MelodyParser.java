@@ -17,9 +17,8 @@ public class MelodyParser {
     public static List<Note> parse(String str, Integer octave) {
         int oct = octave != null ? octave : DEFAULT_OCTAVE;
         return IntStream.range(0, 16).mapToObj(i -> {
-            double pitch = Double.valueOf(str.substring(i, i + 1));
-            Note note = Note.of(Durations.getDuration(120, QUATER), oct * pitch);
-            return note;
+            double pitch = Double.parseDouble(str.substring(i, i + 1));
+            return Note.of(Durations.getDuration(120, QUATER), oct * pitch);
         }).collect(Collectors.toList());
     }
 
@@ -31,9 +30,8 @@ public class MelodyParser {
 
     public static List<Note> parse(String str) {
         return IntStream.range(0, str.length()).mapToObj(i -> {
-            double pitch = Double.valueOf(str.substring(i, i + 1));
-            Note note = Note.of(Durations.getDuration(120, QUATER), DEFAULT_OCTAVE * pitch);
-            return note;
+            double pitch = Double.parseDouble(str.substring(i, i + 1));
+            return Note.of(Durations.getDuration(120, QUATER), DEFAULT_OCTAVE * pitch);
         }).collect(Collectors.toList());
     }
 

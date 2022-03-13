@@ -1,6 +1,8 @@
 package com.yambacode.midi.music.domain;
 
 /**
+ * Class representing a musical note.
+ *
  * @author Christopher Yamba
  */
 public class Note implements Element {
