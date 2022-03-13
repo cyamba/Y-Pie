@@ -1,7 +1,7 @@
-package com.yambacode.midi.music.domain.transposer;
+package com.yambacode.midi.music.transform.transposer;
 
 
-import com.yambacode.midi.music.domain.Note;
+import com.yambacode.midi.music.model.Note;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class NoteMapper {
     
 
-    private static final Function<Note, Note> toMidiNote = note -> {
+    private static final Function<Note, Note> _decimal_digit_to_Diatonic_Note = note -> {
         int midiPitch = (int) note.getPitch() % 10; //0..9
         double duration = note.getDuration();
         return switch (midiPitch) {
@@ -31,10 +31,10 @@ public class NoteMapper {
     };
 
     public static Stream<Note> toMidiNote(Stream<Note> noteStream) {
-        return noteStream.map(toMidiNote);
+        return noteStream.map(_decimal_digit_to_Diatonic_Note);
     }
 
     public static Note toMidiNote(Note note){
-        return toMidiNote.apply(note);
+        return _decimal_digit_to_Diatonic_Note.apply(note);
     }
 }

@@ -1,12 +1,12 @@
-package com.yambacode.midi.music.domain;
+package com.yambacode.midi.music.model;
 
-import com.yambacode.midi.music.domain.factory.Durations;
+import com.yambacode.midi.music.model.factory.Durations;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.yambacode.midi.music.domain.factory.Durations.QUATER;
+import static com.yambacode.midi.music.model.factory.Durations.QUATER;
 /**
  * @author Christopher Yamba
  */

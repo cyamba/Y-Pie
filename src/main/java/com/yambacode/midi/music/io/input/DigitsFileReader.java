@@ -1,12 +1,12 @@
-package com.yambacode.midi.music.input;
+package com.yambacode.midi.music.io.input;
 
 
-import com.yambacode.midi.music.domain.MelodyParser;
-import com.yambacode.midi.music.domain.Note;
-import com.yambacode.midi.music.domain.Transposer;
-import com.yambacode.midi.music.domain.factory.Intervals;
-import com.yambacode.midi.music.domain.transposer.NoteMapper;
 import com.yambacode.midi.music.instruments.Melodizer;
+import com.yambacode.midi.music.model.MelodyParser;
+import com.yambacode.midi.music.model.Note;
+import com.yambacode.midi.music.model.factory.Intervals;
+import com.yambacode.midi.music.transform.transposer.NoteMapper;
+import com.yambacode.midi.music.transform.transposer.Transposer;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,9 +19,11 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
 /**
+ * Reading digits for input to music player by parsing and mapping them to corresponding notes.
+ *
  * @author Christopher Yamba
  */
-public class FileReader {
+public class DigitsFileReader {
 
     public static final String SRC_MAIN_RESOURCES = "src/main/resources/";
     public static final double HALF_A_SECOND = 500d;
@@ -105,7 +107,7 @@ public class FileReader {
         return new LinkedList<>();
     }
 
-    public static Stream<Note> parseDiatonicsStream(Melodizer melodizer, String filePath) {
+    public static Stream<Note> parseDiatonicStream(Melodizer melodizer, String filePath) {
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             return stream
                     .flatMap(line -> getIntStream(line))
@@ -122,6 +124,7 @@ public class FileReader {
 
     private static Stream<Integer> getIntStream(String line) {
         return line.chars()
+                .peek(System.out::println)
                 .mapToObj(i -> (i - _0_IN_ASCII_48_OFFSET))
                 .peek(System.out::println);
     }

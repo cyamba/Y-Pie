@@ -1,4 +1,4 @@
-package com.yambacode.midi.music.domain;
+package com.yambacode.midi.music.model;
 
 /**
  * Class representing a musical note.

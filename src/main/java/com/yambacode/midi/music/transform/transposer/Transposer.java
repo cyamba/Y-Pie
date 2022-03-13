@@ -1,4 +1,6 @@
-package com.yambacode.midi.music.domain;
+package com.yambacode.midi.music.transform.transposer;
+
+import com.yambacode.midi.music.model.Note;
 
 /**
  * @author Christopher Yamba

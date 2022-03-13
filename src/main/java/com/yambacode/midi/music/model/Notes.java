@@ -1,7 +1,7 @@
-package com.yambacode.midi.music.domain;
+package com.yambacode.midi.music.model;
 
 
-import com.yambacode.midi.music.domain.transposer.NoteMapper;
+import com.yambacode.midi.music.transform.transposer.NoteMapper;
 
 /**
  * @author Christopher Yamba

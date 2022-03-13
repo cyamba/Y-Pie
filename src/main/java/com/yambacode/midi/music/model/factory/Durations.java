@@ -1,4 +1,4 @@
-package com.yambacode.midi.music.domain.factory;
+package com.yambacode.midi.music.model.factory;
 
 /**
  * Time units used for note and paus durations.

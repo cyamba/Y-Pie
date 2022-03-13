@@ -1,7 +1,7 @@
 package com.yambacode.midi.music.instruments;
 
 
-import com.yambacode.midi.music.domain.Note;
+import com.yambacode.midi.music.model.Note;
 
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;

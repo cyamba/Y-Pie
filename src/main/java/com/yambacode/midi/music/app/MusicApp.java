@@ -1,7 +1,7 @@
 package com.yambacode.midi.music.app;
 
 
-import com.yambacode.midi.music.domain.Melody;
+import com.yambacode.midi.music.model.Melody;
 
 /**
  * @author Christopher Yamba

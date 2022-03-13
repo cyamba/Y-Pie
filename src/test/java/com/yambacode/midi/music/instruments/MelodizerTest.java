@@ -1,15 +1,15 @@
 package com.yambacode.midi.music.instruments;
-import com.yambacode.midi.music.domain.MelodyParser;
-import com.yambacode.midi.music.domain.Note;
+import com.yambacode.midi.music.model.MelodyParser;
+import com.yambacode.midi.music.model.Note;
 
 import org.junit.Test;
 
 import java.util.List;
 
-import static com.yambacode.midi.music.domain.Transposer.*;
-import static com.yambacode.midi.music.domain.factory.Durations.*;
-import static com.yambacode.midi.music.domain.factory.Pitches.*;
-import static com.yambacode.midi.music.domain.factory.Intervals.*;
+import static com.yambacode.midi.music.transform.transposer.Transposer.*;
+import static com.yambacode.midi.music.model.factory.Durations.*;
+import static com.yambacode.midi.music.model.factory.Pitches.*;
+import static com.yambacode.midi.music.model.factory.Intervals.*;
 import static java.util.stream.Collectors.*;
 
 
