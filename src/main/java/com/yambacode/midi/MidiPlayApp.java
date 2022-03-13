@@ -6,7 +6,6 @@ import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Synthesizer;
 import java.util.Random;
-import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 /**
@@ -66,12 +65,14 @@ public class MidiPlayApp {
         for (MidiChannel chan : channels) {
             IntStream.rangeClosed(0, Byte.MAX_VALUE).forEachOrdered(
                     i -> {
-                        try {
-                            play((byte) (RAND.nextInt(128)), 250, chan);
-                            play((byte) i, 250, chan);
-                            play((byte) (RAND.nextInt(128)), randomDuration.get(), chan);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                        if (RAND.nextBoolean()) {
+                            int sleepMillis = RAND.nextInt(25, 100);
+                            for (int j = 0; j < sleepMillis; j++) {
+                                int note = RAND.nextInt(50, 100);
+                                _play(chan, (byte) note, sleepMillis);
+                            }
+                        } else {
+                            _play(chan, (byte) i);
                         }
                     }
 
@@ -79,10 +80,24 @@ public class MidiPlayApp {
         }
     }
 
-    private static Random RAND = new Random();
-    private static int[] DURATIONS_RAND = {5, 10, 25, 50, 100, 150, 250, 500, 1000};
-    private static Supplier<Integer> randomDuration
-            = () -> DURATIONS_RAND[RAND.nextInt(DURATIONS_RAND.length)];
+    private static final Random RAND = new Random();
+
+    private static void _play(MidiChannel chan, byte i) {
+        try {
+            play(i, 250, chan);
+            play((byte) (new Random().nextInt(128)), 250, chan);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void _play(MidiChannel chan, byte miNumber, int durationMillis) {
+        try {
+            play(miNumber, durationMillis, chan);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     private static void play(byte midiNote, int sleepMillis, MidiChannel channel) throws InterruptedException {
         Thread.sleep(sleepMillis);

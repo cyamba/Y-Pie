@@ -7,7 +7,10 @@ package com.yambacode.midi.music.model;
  */
 public class Note implements Element {
 
+    //TODO BPM adjusted noteduration values.
     private double duration;
+
+    //As enum with named pitches.
     private double pitch;
 
     private Note(double duration, double pitch) {

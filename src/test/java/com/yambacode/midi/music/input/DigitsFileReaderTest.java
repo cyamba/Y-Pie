@@ -26,7 +26,7 @@ public class DigitsFileReaderTest {
 
     @Test
     public void readPiAsDiatonic() {
-        List<Note> notes = DigitsFileReader.parseDiatonics(PathToConstants.PATH_TO_PI);
+        List<Note> notes = DigitsFileReader.parseDiatonic(PathToConstants.PATH_TO_PI);
         Melodizer melodizer = new Melodizer();
         melodizer.start();
         melodizer.playEnding(notes.stream().map(note -> Transposer.transpose(12 * 4, note))

@@ -93,7 +93,7 @@ public class DigitsFileReader {
         return new LinkedList<>();
     }
 
-    public static List<Note> parseDiatonics(String filePath) {
+    public static List<Note> parseDiatonic(String filePath) {
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
             return stream
                     .flatMap(line -> getIntStream(line))

@@ -20,6 +20,7 @@ public class CSVFileReader {
         } catch (IOException ie) {
             ie.printStackTrace();
         }
+        
         return new LinkedList<>();
     }
 
